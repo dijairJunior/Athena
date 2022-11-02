@@ -3,13 +3,26 @@
 # Importando as bibliotecas para os demais comandos
 import speech_recognition as sr
 import pyttsx3
+import datetime
+import wikipedia
+import pywhatkit
 
-#Trainamento do bot para o reconhecimento de falar e exibindo na tela
-rec = sr.Recognizer()
-# print(sr.Microphone().list_microphone_names())
-with sr.Microphone(3) as mic:
-    rec.adjust_for_ambient_noise(mic)
-    print("Pode falar que eu vou gravar")
-    audio = rec.listen(mic)
-    texto = rec.recognize_google(audio, language="pt-BR")
-    print(texto)
+audio = sr.Recognizer()
+maquina = pyttsx3.init()
+
+def executa_comando():
+    try:
+        with sr.Microphone() as source:
+            print('Ouvindo..')
+            voz = audio.listen(source)
+            comando = audio.recognize_google(voz, language='pt-BR')
+            comando = comando.lower()
+            if 'tina' in comando:
+                comando = comando.replace('tina', '')
+                maquina.say(comando)
+                maquina.runAndWait()
+
+    except:
+        print('Microfone não está ok')
+
+    return comando
