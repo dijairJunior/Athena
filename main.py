@@ -66,7 +66,7 @@ def ia():
             'class': 'BNeawe iBp4i AP7Wnd'}).text
         fala(f'O preço de {coin} é de {text}')
 
-    # Criar um lastro de repetição para o código não parar, nos quebrarmos este lastro
+    # Criar um lastro de repetição para o código não parar
     while True:
         grava()
 
@@ -143,8 +143,8 @@ label_l = Label(janela, text='Liza - Assistente virtual em Python 3.9',
 label_l.place(x=200, y=200)
 
 botao_l = Button(janela, height=4, width=67, text='Clique aqui para iniciar!', command=ia, background='cyan')
-botao_l.place(x=200, y=280)
+botao_l.place(x=350, y=280)
 
-janela.geometry('1024x500+0+0')
+janela.geometry('1200x500+0+0')
 
 janela.mainloop()
