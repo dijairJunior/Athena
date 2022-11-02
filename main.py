@@ -1,4 +1,4 @@
-import tkinter
+from tkinter import *
 
 def ia():
     import datetime
@@ -133,3 +133,17 @@ def ia():
         # Se causo de algum problema ira exibir um erro
         except:
             print('Ocorreu algum erro, tento novamente')
+
+
+janela = Tk()
+janela.title('Liza - Assistente virtual em Python 3.9')
+
+label_l = Label(janela, test='Liza - Assistente virtual em Python 3.9',
+                font='Arial 35')
+label_l.place(x=200, y=200)
+
+botao_l = Button(janela, height=4, width=67, test='Clique aqui para iniciar!', compound=ia, background='cyan')
+botao_l.place(x=200, y=280)
+
+janela.geometry('890x500+0+0')
+janela.mainloop()
