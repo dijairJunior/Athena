@@ -37,7 +37,7 @@ def fala(text):
     playsound(file1, True)
     os.remove(file1)
 
-def iaon():
+def ia():
     # Listas
     denada = ['De nada', 'Por nada', 'A seu dispor!', 'Até logo!']
     denada = random.choice(denada)
@@ -64,8 +64,7 @@ def iaon():
     def grava():
         freq = 48000  # Altere a frequência se achar necessário
         duration = 5  # Altere a duração de cada gravação
-        recording = sd.rec(int(duration * freq),
-                           samplerate=freq, channels=2)
+        recording = sd.rec(int(duration * freq), samplerate=freq, channels=2)
         print('Fale agora!')
         sd.wait()
         wv.write("minhavoz.wav", recording, freq, sampwidth=2)
@@ -73,13 +72,11 @@ def iaon():
 
     # Função de pegar informações sobre ativos
     def get_crypto_price(coin):
-        url = "https://www.google.com/search?q=" + coin + "+hoje"
+        url = "https://www.google.com/search?q=" + coin + "hoje"
         HTML = requests.get(url)
         soup = bs4.BeautifulSoup(HTML.text, 'html.parser')
-        text = soup.find("div", attrs={'class': 'BNeawe iBp4i AP7Wnd'}).find("div",
-                                                                             attrs={
-                                                                                 'class': 'BNeawe iBp4i AP7Wnd'}).text
-        fala(f'O preço de {coin} é de {text}')
+        text = soup.find("div", attrs={'class': 'BNeawe iBp4i AP7Wnd'}).find("div", attrs={'class': 'BNeawe iBp4i AP7Wnd'}).text
+        #fala(f'O preço de {coin} é de {text}')
 
     while True:
         grava()
@@ -112,7 +109,6 @@ def iaon():
                     hora = datetime.datetime.now().strftime('%H:%M')
                     fala('Agora são' + hora)
 
-
                 # Pesquisas
                 elif 'procure por' in texto:
                     procurar = texto.replace('procure por', '')
@@ -125,8 +121,6 @@ def iaon():
                     tocar = texto.replace('toque', '')
                     fala(f'Ok, tocando música!')
                     resultado = pywhatkit.playonyt(tocar)
-
-
 
                 # Abrir sites
                 elif 'abrir site' in texto:
@@ -167,20 +161,14 @@ def iaon():
 
 
 janela = Tk()
-janela.title('Assistente Virtual em Python - Dev')
+janela.title('Liza - Assistente virtual em Python 3.9')
 
-label2_l = Label(janela, text='Feito por Dijair Camargo :)', font='Calibri 10', )
-label2_l.place(x=0, y=0)
-
-label3_l = Label(janela, text='Se gostou, comente uma sugestão!', font='Calibri 10', )
-label3_l.place(x=690, y=480)
-
-label_l = Label(janela, text='Assistente Virtual Python', font='Arial 35', )
+label_l = Label(janela, text='Liza - Assistente virtual em Python 3.9', font='Arial 35')
 label_l.place(x=200, y=200)
 
-botao_l = Button(janela, height=4, width=67, text='Clique aqui para iniciar!', command=iaon, background='cyan')
-botao_l.place(x=200, y=270)
+botao_l = Button(janela, height=4, width=67, text='Clique aqui para iniciar!', command=ia, background='grey')
+botao_l.place(x=350, y=280)
 
-janela.geometry('890x500+0+0')
+janela.geometry('1200x500+0+0')
 
 janela.mainloop()

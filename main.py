@@ -42,8 +42,8 @@ def ia():
 
     # Criando Função para gravar o audio
     def grava():
-        freq = 48000  # Altere a frequência se achar necessário
-        duration = 5  # Altere a duração de cada gravação
+        freq = 48000  
+        duration = 5  
         recording = sd.rec(int(duration * freq), samplerate=freq, channels=2)
         print('Fale agora!')
         sd.wait()
@@ -59,12 +59,12 @@ def ia():
 
     # Função para pegar as informações os ativos de mercados
     def get_crypto_price(coin):
-        url = "https://www.google.com/search?q=" + coin + "+hoje"
+        url = "https://www.google.com/search?q=" + coin + "hoje"
         HTML = requests.get(url)
         soup = bs4.BeautifulSoup(HTML.text, 'html.parser')
         text = soup.find("div", attrs={'class': 'BNeawe iBp4i AP7Wnd'}).find("div", attrs={
             'class': 'BNeawe iBp4i AP7Wnd'}).text
-        fala(f'O preço de {coin} é de {text}')
+        fala('O preço de {coin} é de {text}')
 
     # Criar um lastro de repetição para o código não parar
     while True:
@@ -74,7 +74,7 @@ def ia():
         try:
             with sr.AudioFile(filename) as source:
                 audio_data = r.record(source)
-                say = r.recognize_google(audio_data, language='pt=BR')
+                says = r.recognize_google(audio_data, language='pt=BR')
                 print('Você disso: ' + says.lower())
                 texto = says.lower()
 
@@ -105,7 +105,7 @@ def ia():
                 fala('Ok, tocando musica')
                 resultado = pywhatkit.playonyt(toque)
 
-            # Para abrir site e adicionar sites
+            # Método para abrir site e adicionar sites
             elif 'abrir site' in texto:
                 site = texto.replace('abrir site', '')
                 mysites = joblib.load('meusites.obj')
@@ -116,6 +116,10 @@ def ia():
             elif 'adicionar site' in texto:
                 addsite()
                 joblib.dump(meusites, 'meusites.obj')
+
+            # Apresentação do assistente virtual
+            elif 'apresentar' in texto or 'apresentação' in texto or 'apresente-se' is texto:
+                fala('Oi meu nome é Liza, eu sou sua assistente virtual! Você pode me pedir para abrir algum site, ou para tocar alguma música, ou pode perguntar as horas, e mais algumas coisas. Espero que goste!')
 
             # informações sobre ativos de mercado
             elif 'valor hoje' in texto:
@@ -138,11 +142,10 @@ def ia():
 janela = Tk()
 janela.title('Liza - Assistente virtual em Python 3.9')
 
-label_l = Label(janela, text='Liza - Assistente virtual em Python 3.9',
-                font='Arial 35')
+label_l = Label(janela, text='Liza - Assistente virtual em Python 3.9', font='Arial 35')
 label_l.place(x=200, y=200)
 
-botao_l = Button(janela, height=4, width=67, text='Clique aqui para iniciar!', command=ia, background='cyan')
+botao_l = Button(janela, height=4, width=67, text='Clique aqui para iniciar!', command=ia, background='grey')
 botao_l.place(x=350, y=280)
 
 janela.geometry('1200x500+0+0')
