@@ -5,19 +5,20 @@ from tkinter import *
 
 def ia():
     # Importando os modulos do chat
-    import datetime
-    import speech_recognition as sr
-    import sounddevice as sd
-    import wavio as wv
-    import wikipedia
-    import webbrowser
+    import datetime # Representar data e hora em vários formatos.
+    import speech_recognition as sr # Para realização de reconhecimento de fala, com suporte para diversos motores e
+    # APIs, online e offline.
+    import sounddevice as sd # Ligações com o PyAudio e NumPy
+    import wavio as wv # Ler um arquivo WAV e também gravar um array em NumPy
+    import wikipedia # Modulo de busca de diversos assuntos
+    import webbrowser # Principalmente destinado a evitar erros de importação
     import random
-    from gtts import gTTS
-    from playsound import playsound
-    import pywhatkit
-    import bs4
-    import requests
-    import joblib
+    from gtts import gTTS # Principal API para reconhecimento de fala e transcrição dos textos reconhecido
+    from playsound import playsound # Para executar um audio gravado
+    import pywhatkit # Realizar automação para WhatsApp e YouTube
+    import bs4 #
+    import requests # Não a nessecidade de de adicionar strings manualmente e fica tudo automaticamente.
+    import joblib #
 
     global none, link
 
