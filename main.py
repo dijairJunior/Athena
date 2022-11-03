@@ -1,7 +1,10 @@
+#-*- coding: utf-8 -*-
+
 import os
 from tkinter import *
 
 def ia():
+    # Importando os modulos do chat
     import datetime
     import speech_recognition as sr
     import sounddevice as sd
@@ -73,6 +76,8 @@ def ia():
     while True:
         grava()
 
+        # Função para ouvir e reconhecer a fala
+        # Habilita o microfone do usuário
         r = sr.Recognizer()
         try:
             with sr.AudioFile(filename) as source:
@@ -141,21 +146,21 @@ def ia():
             elif 'boa noite' in texto:
                 fala('boa noite!')
 
-        # Se causo de algum problema ira exibir um erro
+        # Se nao reconheceu o padrao de fala, exibe a mensagem
         except:
 
             print('Ocorreu algum erro, tento novamente')
 
-
+# Criação um painel interativo para execução do Assistente virtual
 janela = Tk()
-janela.title('Liza - Assistente virtual em Python')
+janela.title('ATHENA - Assistente virtual em Python')
 
-label_l = Label(janela, text='Liza - Assistente virtual em Python', font='Arial 35')
-label_l.place(x=200, y=200)
+label_l = Label(janela, text='ATHENA - Assistente virtual em Python', font='Arial 35')
+label_l.place(x=50, y=100)
 
-botao_l = Button(janela, height=4, width=67, text='Clique aqui para iniciar!', command=ia, background='grey')
-botao_l.place(x=350, y=280)
+botao_l = Button(janela, height=4, width=40, text='Clique aqui para iniciar!', font='Arial 15', command=ia, background='#FFFAFA')
+botao_l.place(x=220, y=280)
 
-janela.geometry('1200x500+0+0')
+janela.geometry('950x500+0+0')
 
 janela.mainloop()
