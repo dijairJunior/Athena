@@ -121,9 +121,9 @@ def ia():
             # Método para abrir site e adicionar sites
             elif 'abrir site' in texto:
                 site = texto.replace('abrir site', '')
-                mysites = joblib.load('meusites.obj')
+                meusites = joblib.load('meusites.obj')
 
-                for i in mysites:
+                for i in meusites:
                     if i[0] in site:
                         webbrowser.open(i[1])
             elif 'adicionar site' in texto:
@@ -132,7 +132,7 @@ def ia():
 
             # Apresentação do assistente virtual
             elif 'apresentar' in texto or 'apresentação' in texto or 'apresente-se' is texto:
-                fala('Oi meu nome é Liza, eu sou sua assistente virtual! Você pode me pedir para abrir algum site, ou para tocar alguma música, ou pode perguntar as horas, e mais algumas coisas. Espero que goste!')
+                fala('Oi meu nome é Athena, eu sou sua assistente virtual! Você pode me pedir para abrir algum site, ou para tocar alguma música, ou pode perguntar as horas, e mais algumas coisas. Espero que goste!')
 
             # informações sobre ativos de mercado
             elif 'valor hoje' in texto:
