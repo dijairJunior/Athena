@@ -1,3 +1,4 @@
+import os
 from tkinter import *
 
 def ia():
@@ -35,10 +36,12 @@ def ia():
 
     # Criação da assistente de fala 'Google'
     def fala(text):
-        tts = gTTS(text, lang='pt')
+        tts = gTTS(text, lang='pt-BR')
         tts.save('falaia.mp3')
         tts.save('falaia.mp3')
         playsound(falaia)
+        os.remove(filename)
+        os.remove(falaia)
 
     # Criando Função para gravar o audio
     def grava():
@@ -70,11 +73,11 @@ def ia():
     while True:
         grava()
 
-        r = sr.Recognizer
+        r = sr.Recognizer()
         try:
             with sr.AudioFile(filename) as source:
                 audio_data = r.record(source)
-                says = r.recognize_google(audio_data, language='pt=BR')
+                says = r.recognize_google(audio_data, language='pt-BR')
                 print('Você disso: ' + says.lower())
                 texto = says.lower()
 
@@ -82,7 +85,7 @@ def ia():
             f = open('shutdown.txt', 'r')
             fec = f.read()
             if texto in fec:
-                fala('Ok, deslinado...')
+                fala('Ok, desligando...')
                 janela.destroy()
                 break
 
@@ -91,19 +94,23 @@ def ia():
                 hora = datetime.datetime.now().strftime('%H:%M')
                 fala('Agora são' + hora)
 
+
             # Para realizar uma pesquisa
             elif 'procure por' in texto:
                 procurar = texto.replace('procure por', '')
-                wikipedia.set_long('pt')
+                wikipedia.set_lang('pt')
                 resultado = wikipedia.summary(procurar, 2)
                 fala(resultado)
+                fala.runAndWaint()
 
             # Para tocar a musica ou video no youtube
-            elif 'toque' in texto or 'toque' in texto:
+            elif 'toque' in texto or 'tocar' in texto:
                 tocar = texto.replace('toque', '')
                 toque = texto.replace('tocar', '')
                 fala('Ok, tocando musica')
-                resultado = pywhatkit.playonyt(toque)
+                resultado = pywhatkit.playonyt(toque, tocar)
+                fala(resultado)
+                fala.runAndWaint()
 
             # Método para abrir site e adicionar sites
             elif 'abrir site' in texto:
@@ -136,13 +143,14 @@ def ia():
 
         # Se causo de algum problema ira exibir um erro
         except:
+
             print('Ocorreu algum erro, tento novamente')
 
 
 janela = Tk()
-janela.title('Liza - Assistente virtual em Python 3.9')
+janela.title('Liza - Assistente virtual em Python')
 
-label_l = Label(janela, text='Liza - Assistente virtual em Python 3.9', font='Arial 35')
+label_l = Label(janela, text='Liza - Assistente virtual em Python', font='Arial 35')
 label_l.place(x=200, y=200)
 
 botao_l = Button(janela, height=4, width=67, text='Clique aqui para iniciar!', command=ia, background='grey')
