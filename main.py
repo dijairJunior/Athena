@@ -20,7 +20,7 @@ def ia():
     import bs4
     import requests  # Não a nessecidade de adicionar Strings manualmente e fica tudo automaticamente.
     import joblib
-    from typing import List, Tuple, Dict
+    from typing import List, Tuple
 
     # Criação de lista de saudação
     saudacao = ['De nada', 'Por nada', 'A seu dispor', 'Até logo']
@@ -70,8 +70,8 @@ def ia():
                 return
 
         # Se o nome do site não existir na lista, adiciona o novo site
-        listabase = [snome, slink]
-        meusites.append(listabase)
+        lista_site = [snome, slink]
+        meusites.append(lista_site)
 
     # Função para pegar as informações os ativos de mercados
     def get_crypto_price(bitcoin):
@@ -162,9 +162,9 @@ def ia():
 
 # Criação um painel interativo para execução do Assistente virtual
 janela = Tk()
-janela.title('ATHENA - Assistente virtual em Python')
+janela.title('ZOYE - Assistente virtual em Python')
 
-label_l = Label(janela, text='ATHENA - Assistente virtual em Python', font='Arial 35')
+label_l = Label(janela, text='ZOYE - Assistente virtual em Python', font='Arial 35')
 label_l.place(x=50, y=100)
 
 botao_l = Button(janela, height=4, width=40, text='Clique aqui para iniciar!', font='Arial 15', command=ia,
